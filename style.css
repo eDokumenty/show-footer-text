@@ -1,0 +1,10 @@
+#footer-text-content{
+    margin-bottom: 10%;
+}
+#footer-text-content .footer-text{
+    font-size: 14px;
+    margin-top: 0;
+}
+#footer-text-content .footer-text a{
+    color: #fff;
+}
