@@ -20,6 +20,12 @@ This plugin add custom footer to your theme, depending on the displayed content 
 
 Za pomocą tej wtyczki możesz dodać wyjątkową stopkę dla każdej swojej strony. Wystarczy wejść w edycję danej strony i uzupełnić pole o tytule 'Footer description' by dodać tekst do stopki.
 
+W swoim szablonie w miejscu gdzie ma być generowana wyjątkowa stopka musisz wkleić następujący kod
+
+```php
+<?= do_shortcode( '[show-footer-text]' ) ?>
+```
+
 Wtyczka ta jest uzależnona od wtyczki Advanced Custom Fields, dlatego wymagane jest jej pobranie i włączenie.
 
 ## Installation ##
