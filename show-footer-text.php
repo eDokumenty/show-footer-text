@@ -61,3 +61,17 @@ add_shortcode('desc', function(){
         return '<div id="footer-text-content"><p class="footer-text">'.replace($footer_text).'</p></div>';
     }
 });
+
+/**
+ * Self-update hook
+ */
+require PLUGIN_SHOW_TEXT_DIR.'/update-core/plugin-update-checker.php';
+$className = PucFactory::getLatestClassVersion('PucGitHubChecker');
+$myUpdateChecker = new $className(
+    'https://github.com/eDokumenty/tags-add/',
+    __FILE__,
+    'master'
+);
+/**
+ * end hook
+ */
