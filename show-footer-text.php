@@ -16,8 +16,8 @@ define('SHOW_TEXT_VERSION', '0.0.1');
  * add css
  */
 add_action('init', function (){
-    wp_register_style('tags-add', plugins_url('/style.css', __FILE__));
-    wp_enqueue_style('tags-add');
+    wp_register_style('show-footer-text', plugins_url('/style.css', __FILE__));
+    wp_enqueue_style('show-footer-text');
 });
 
 /**
@@ -29,7 +29,7 @@ function replace($str){
   return preg_replace('/ ([a-z]{1}) /', " $1&nbsp;", $str);
 }
 
-add_shortcode('desc', function(){
+add_shortcode('show-footer-text', function(){
     $name = $_SERVER['REDIRECT_URL'];
     $path = explode('/', $name);
     $post_name = (!empty($path[ count($path) - 1])) ? $path[ count($path) - 1] : $path[ count($path) - 2];
@@ -68,7 +68,7 @@ add_shortcode('desc', function(){
 require PLUGIN_SHOW_TEXT_DIR.'/update-core/plugin-update-checker.php';
 $className = PucFactory::getLatestClassVersion('PucGitHubChecker');
 $myUpdateChecker = new $className(
-    'https://github.com/eDokumenty/tags-add/',
+    'https://github.com/eDokumenty/show-footer-text/',
     __FILE__,
     'master'
 );
