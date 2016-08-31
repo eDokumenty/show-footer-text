@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Show footer text
- * Version: 0.0.1
+ * Version: 1.0.0
  * Description: Plugin show text from custom fields.
  * Author: Klaudia Wasilewska
  * Author URI: http://edokumenty.eu/
@@ -10,7 +10,7 @@
  */
 
 define('PLUGIN_SHOW_TEXT_DIR', plugin_dir_path(__FILE__));
-define('SHOW_TEXT_VERSION', '0.0.1');
+define('SHOW_TEXT_VERSION', '1.0.0');
 
 /**
  * Hook activation plugin
@@ -38,11 +38,6 @@ register_activation_hook(__FILE__, function() {
         'post_type'    => 'acf-field'
     ];
     $post_id_field = wp_insert_post( $field_post );
-    
-    $ID[0] = $post_id_group;
-    $ID[1] = $post_id_field;
-    
-    return $ID;
 });
 
 /**
