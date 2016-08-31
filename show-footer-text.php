@@ -13,6 +13,53 @@ define('PLUGIN_SHOW_TEXT_DIR', plugin_dir_path(__FILE__));
 define('SHOW_TEXT_VERSION', '0.0.1');
 
 /**
+ * Hook activation plugin
+ */
+register_activation_hook(__FILE__, function() {
+    $group_post = [
+        //'post_author'  => '',
+        'post_content' => 'a:7:{s:8:"location";a:3:{i:0;a:1:{i:0;a:3:{s:5:"param";s:9:"post_type";s:8:"operator";s:2:"==";s:5:"value";s:4:"page";}}i:1;a:1:{i:0;a:3:{s:5:"param";s:9:"post_type";s:8:"operator";s:2:"==";s:5:"value";s:7:"klienci";}}i:2;a:1:{i:0;a:3:{s:5:"param";s:9:"post_type";s:8:"operator";s:2:"==";s:5:"value";s:11:"rozwiazania";}}}s:8:"position";s:6:"normal";s:5:"style";s:7:"default";s:15:"label_placement";s:3:"top";s:21:"instruction_placement";s:5:"label";s:14:"hide_on_screen";s:0:"";s:11:"description";s:0:"";}',
+        'post_title'   => 'Footer description',
+        'post_excerpt' => 'footer-description',
+        'post_status'  => 'publish',
+        'post_name'    => 'group_1',
+        'post_type'    => 'acf-field-group'
+    ];
+    
+    $post_id_group = wp_insert_post( $group_post );
+    
+    $field_post = [
+        'post_content' => 'a:9:{s:4:"type";s:7:"wysiwyg";s:12:"instructions";s:0:"";s:8:"required";i:0;s:17:"conditional_logic";i:0;s:7:"wrapper";a:3:{s:5:"width";s:0:"";s:5:"class";s:0:"";s:2:"id";s:0:"";}s:13:"default_value";s:0:"";s:4:"tabs";s:3:"all";s:7:"toolbar";s:5:"basic";s:12:"media_upload";i:1;}',
+        'post_title'   => 'Footer text',
+        'post_excerpt' => 'footer_text',
+        'post_status'  => 'publish',
+        'post_name'    => 'field_1',
+        'post_parent'  => $post_id_group,
+        'post_type'    => 'acf-field'
+    ];
+    $post_id_field = wp_insert_post( $field_post );
+    
+    $ID[0] = $post_id_group;
+    $ID[1] = $post_id_field;
+    
+    return $ID;
+});
+
+/**
+ * Hook deactivation plugin
+ */
+register_deactivation_hook(__FILE__, function() {
+    global $wpdb;
+    $prefix = $wpdb->prefix;
+    
+    $query = "DELETE FROM ".$prefix."posts WHERE post_name = 'field_1'";
+    $wpdb->query($query);
+    
+    $query = "DELETE FROM ".$prefix."posts WHERE post_name = 'group_1'";
+    $wpdb->query($query);
+});
+
+/**
  * add css
  */
 add_action('init', function (){

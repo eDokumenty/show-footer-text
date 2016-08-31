@@ -2,7 +2,7 @@
 
 Contributors: Klaudia Wasilewska
 
-Tags: custom footer
+Tags: custom footer, footer, text
 
 Requires at least: 4.6
 
@@ -18,7 +18,9 @@ This plugin add custom footer to your theme, depending on the displayed content 
 
 ## Description ##
 
-Za pomocą tej wtyczki możesz dodać wyjątkową stopkę dla każdej swojej strony. Wystarczy wejść w edycję danej strony by dodać tekst do stopki
+Za pomocą tej wtyczki możesz dodać wyjątkową stopkę dla każdej swojej strony. Wystarczy wejść w edycję danej strony i uzupełnić pole o tytule 'Footer description' by dodać tekst do stopki.
+
+Wtyczka ta jest uzależnona od wtyczki Advanced Custom Fields, dlatego wymagane jest jej pobranie i włączenie.
 
 ## Installation ##
 
